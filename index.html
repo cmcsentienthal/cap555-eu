@@ -18,6 +18,12 @@
 <meta property="og:image:alt" content="Les applis de Cap555.eu">
 <meta name="twitter:card" content="summary_large_image">
 
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFF8E7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#07103A">
+
 <style>
 :root{
   --bg:#FFF8E7; --bg2:#FFF1CC; --card:#FFFFFF; --ink:#2B2A52; --soft:#5E5C86; --line:#F3DFA8;
@@ -191,6 +197,16 @@ html[data-theme="dark"] .pied a{color:#FFD21F}
   }
   if (sombre) ciel();
 })();
+
+// Service worker : permet l'installation sur téléphone et le hors-ligne.
+// Enregistré après le chargement, pour ne pas ralentir l'affichage.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(e){
+      console.warn('Service worker non enregistré :', e);
+    });
+  });
+}
 </script>
 </body>
 </html>
