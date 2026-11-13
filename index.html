@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Les applis de Cap555.eu</title>
+<meta name="description" content="Les applis offertes par l'association Cap555 : Yi King et Numérologie.">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cap555">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Les applis de Cap555.eu">
+<meta property="og:description" content="Yi King et Numérologie. À utiliser en ligne, sur téléphone comme sur ordinateur.">
+<meta property="og:url" content="https://cap555.eu/">
+<meta property="og:image" content="https://cap555.eu/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Les applis de Cap555.eu">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+:root{
+  --bg:#FFF8E7; --bg2:#FFF1CC; --card:#FFFFFF; --ink:#2B2A52; --soft:#5E5C86; --line:#F3DFA8;
+  --grad:linear-gradient(120deg,#FFD21F 0%,#FF9A1F 38%,#F0433A 72%,#E8306B 100%);
+  --gradG:linear-gradient(120deg,#C6E82E 0%,#3CC24E 55%,#149A6B 100%);
+  --gradY:linear-gradient(120deg,#FFE45C 0%,#FFB21F 100%);
+  --gradR:linear-gradient(120deg,#FF9A1F 0%,#F0433A 60%,#E8306B 100%);
+  --shadow:0 6px 22px rgba(240,120,30,.16);
+  --star:transparent; --filante:transparent;
+}
+html[data-theme="dark"]{
+  --bg:#07103A; --bg2:#122268; --card:rgba(14,28,92,.74); --ink:#F4F8FF; --soft:#BCD0FF;
+  --line:rgba(150,185,255,.30);
+  --shadow:0 8px 30px rgba(2,6,34,.55),0 0 0 1px rgba(150,185,255,.16);
+  --star:#9CC4FF; --filante:#CFE2FF;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Ubuntu,sans-serif;
+  font-size:17px;line-height:1.55;transition:background .4s}
+html[data-theme="light"] body{
+  background:radial-gradient(1200px 500px at 85% -10%,#FFE9A8 0%,transparent 60%),
+             radial-gradient(900px 480px at -10% 10%,#FFD9C2 0%,transparent 55%),var(--bg)}
+html[data-theme="dark"] body{
+  background:radial-gradient(1100px 620px at 78% -8%,rgba(58,96,214,.55) 0%,transparent 62%),
+             radial-gradient(900px 460px at 12% 108%,rgba(214,58,104,.18) 0%,transparent 62%),
+             linear-gradient(180deg,#040A2B 0%,#081545 38%,#0E2270 72%,#17338F 100%);
+  background-attachment:fixed}
+
+/* ciel étoilé, visible en mode sombre seulement */
+#ciel{position:fixed;inset:0;pointer-events:none;z-index:0;display:none;overflow:hidden}
+html[data-theme="dark"] #ciel{display:block}
+.et{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--star);
+  box-shadow:0 0 6px 1px var(--star);animation:scintille 3.4s ease-in-out infinite}
+.et.g{width:3px;height:3px}
+@keyframes scintille{0%,100%{opacity:.18;transform:scale(.7)}50%{opacity:1;transform:scale(1)}}
+.filante{position:absolute;width:140px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,transparent,var(--filante));opacity:0;
+  animation:file 9s linear infinite}
+@keyframes file{
+  0%{opacity:0;transform:translate(0,0) rotate(28deg)}
+  4%{opacity:.95}
+  14%{opacity:0;transform:translate(420px,220px) rotate(28deg)}
+  100%{opacity:0;transform:translate(420px,220px) rotate(28deg)}}
+@media (prefers-reduced-motion:reduce){.et,.filante{animation:none}.filante{opacity:0}}
+
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:0 16px 72px}
+header.top{display:flex;align-items:center;gap:14px;padding:22px 0 4px}
+.grow{flex:1;min-width:0}
+h1{font-family:Georgia,"Noto Serif","DejaVu Serif",serif;font-size:1.8rem;margin:0;line-height:1.12}
+.sub{color:var(--soft);font-size:.9rem;margin-top:4px}
+.iconbtn{border:0;background:var(--card);color:var(--ink);width:46px;height:46px;
+  border-radius:50%;font-size:1.25rem;cursor:pointer;box-shadow:var(--shadow);flex:none}
+
+.intro{background:var(--grad);color:#fff;border-radius:22px;padding:20px 22px;
+  box-shadow:var(--shadow);margin:20px 0 22px;text-shadow:0 1px 2px rgba(120,30,0,.3)}
+.intro h2{margin:0 0 5px;font-family:Georgia,"Noto Serif",serif;font-size:1.3rem}
+.intro p{margin:0;font-size:.96rem}
+
+.grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.appli{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:22px;
+  color:#fff;text-decoration:none;box-shadow:var(--shadow);min-height:150px;
+  text-shadow:0 1px 2px rgba(60,20,0,.35);transition:transform .15s}
+.appli:hover,.appli:focus-visible{transform:translateY(-3px);
+  outline:3px solid var(--ink);outline-offset:3px}
+.appli .nom{font-family:Georgia,"Noto Serif",serif;font-weight:700;font-size:1.22rem;line-height:1.18}
+.appli .quoi{font-size:.92rem;line-height:1.4;flex:1}
+.appli .ouvrir{font-weight:800;font-size:.9rem;letter-spacing:.02em}
+.a1{background:var(--gradR)}
+.a2{background:var(--gradY);color:#5A2B00;text-shadow:none}
+
+.pied{margin-top:30px;color:var(--soft);font-size:.92rem;text-align:center}
+.pied a{color:#F0433A;font-weight:600;text-underline-offset:3px}
+html[data-theme="dark"] .pied a{color:#FFD21F}
+
+@media (max-width:620px){
+  body{font-size:16px}
+  h1{font-size:1.45rem}
+  .grille{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="ciel" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="grow">
+      <h1>Les applis de Cap555.eu</h1>
+      <div class="sub">À utiliser en ligne, sur téléphone comme sur ordinateur.</div>
+    </div>
+    <button class="iconbtn" id="bascule" type="button"
+            aria-label="Basculer entre le mode clair et le mode sombre">🌙</button>
+  </header>
+
+  <section class="intro">
+    <h2>Gratuites, sans compte, sans publicité</h2>
+    <p>Aucune de ces applis ne demande d'inscription et aucune ne collecte de données.
+       Tout se passe dans votre navigateur.</p>
+  </section>
+
+  <nav class="grille" aria-label="Liste des applis">
+    <a class="appli a1" href="https://cmcsentienthal.github.io/Yi-King/">
+      <span class="nom">Yi King</span>
+      <span class="quoi">Le Livre des transformations. Tirage aux pièces ou aux tiges,
+        et les 64 hexagrammes commentés.</span>
+      <span class="ouvrir">Ouvrir →</span>
+    </a>
+
+    <a class="appli a2" href="https://cmcsentienthal.github.io/nombres-de-la-vie/">
+      <span class="nom">Numérologie</span>
+      <span class="quoi">Aider à mieux se connaître en utilisant la signification
+        des chiffres et des nombres.</span>
+      <span class="ouvrir">Ouvrir →</span>
+    </a>
+
+  </nav>
+
+  <p class="pied">
+    Proposées gracieusement
+  </p>
+</div>
+
+<script>
+// Thème : préférence enregistrée, sinon celle du système.
+(function(){
+  var html = document.documentElement, btn = document.getElementById('bascule');
+  var memo = null;
+  try { memo = localStorage.getItem('theme-cap555'); } catch(e) {}
+  var sombre = memo ? memo === 'dark'
+    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  function applique(){
+    html.setAttribute('data-theme', sombre ? 'dark' : 'light');
+    btn.textContent = sombre ? '☀️' : '🌙';
+    btn.setAttribute('aria-pressed', String(sombre));
+  }
+  applique();
+
+  btn.addEventListener('click', function(){
+    sombre = !sombre;
+    applique();
+    try { localStorage.setItem('theme-cap555', sombre ? 'dark' : 'light'); } catch(e) {}
+    if (sombre) ciel();
+  });
+
+  // Étoiles : dessinées une seule fois, au premier passage en mode sombre.
+  var fait = false;
+  function ciel(){
+    if (fait) return;
+    fait = true;
+    var c = document.getElementById('ciel'), frag = document.createDocumentFragment();
+    for (var i = 0; i < 70; i++){
+      var e = document.createElement('div');
+      e.className = 'et' + (Math.random() < 0.28 ? ' g' : '');
+      e.style.left = (Math.random() * 100).toFixed(2) + '%';
+      e.style.top  = (Math.random() * 100).toFixed(2) + '%';
+      e.style.animationDelay = (Math.random() * 3.4).toFixed(2) + 's';
+      frag.appendChild(e);
+    }
+    for (var j = 0; j < 2; j++){
+      var f = document.createElement('div');
+      f.className = 'filante';
+      f.style.left = (Math.random() * 55).toFixed(2) + '%';
+      f.style.top  = (Math.random() * 35).toFixed(2) + '%';
+      f.style.animationDelay = (3 + j * 4.5).toFixed(2) + 's';
+      frag.appendChild(f);
+    }
+    c.appendChild(frag);
+  }
+  if (sombre) ciel();
+})();
+</script>
+</body>
+</html>
