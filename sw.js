@@ -6,7 +6,7 @@
  *  gardent l'ancien contenu en cache, et tu n'as aucun moyen de le voir.
  * ════════════════════════════════════════════════════════════════════
  */
-const VERSION = 'v2';
+const VERSION = 'v3';
 
 const CACHE = `cap555-eu-${VERSION}`;
 
